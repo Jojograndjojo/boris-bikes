@@ -16,21 +16,18 @@
       it 'raises an error when there are no bikes available' do
         expect { docking_station.release_bike }.to raise_error "No bikes available"
       end
-<<<<<<< HEAD
+
     end
     it "releases a working bike" do
       bike = Bike.new
       expect(bike).to be_working
     end
-=======
->>>>>>> 631cda2b877d7d767a2a4c894741e46d09cacdea
 
       it "releases a working bike" do
       expect(Bike.new).to be_working
       end
 
     end
-
 
     describe '#dock' do
       it "returns a bike to the station" do
