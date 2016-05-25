@@ -2,27 +2,43 @@
 
 
   describe DockingStation do
-    subject(:docking_station) { described_class.new}
+
+  subject(:docking_station) { described_class.new}
 
   	it {is_expected.to respond_to :release_bike}
 
+    it {is_expected.to respond_to(:bike)}
+
+    it  {is_expected.to respond_to(:dock).with(1).argument}
+
     describe '#release_bike' do
+
       it 'raises an error when there are no bikes available' do
         expect { docking_station.release_bike }.to raise_error "No bikes available"
       end
+<<<<<<< HEAD
     end
     it "releases a working bike" do
       bike = Bike.new
       expect(bike).to be_working
     end
+=======
+>>>>>>> 631cda2b877d7d767a2a4c894741e46d09cacdea
 
-  	it  {is_expected.to respond_to(:dock).with(1).argument}
+      it "releases a working bike" do
+      expect(Bike.new).to be_working
+      end
 
-    it {is_expected.to respond_to(:bike)}
-
-    it "returns a bike to the station" do
-      bike = Bike.new
-      docking_station.dock(bike)
-      expect(docking_station.bike).to eq bike
     end
+
+
+    describe '#dock' do
+      it "returns a bike to the station" do
+        bike = Bike.new
+        docking_station.dock(bike)
+        expect{docking_station.dock(bike)}.to raise_error 'No free slots available'
+    end
+  end
+
+
 end
